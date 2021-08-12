@@ -1,5 +1,6 @@
 html {
     box-sizing: border-box;
+    height: 100%;
 }
   
 *, *:before, *:after {
@@ -7,8 +8,8 @@ html {
 }
 
 body {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     margin: 0;
     font-family: 'Courier New', Courier, monospace;
     display: flex;
@@ -17,7 +18,7 @@ body {
 
 header {
     padding: 1vh;
-    height: 20vh;
+    height: 20%;
 }
 
 .header__title {
@@ -34,7 +35,7 @@ header {
 }
 
 main {
-    height: 80vh;
+    height: 80%;
 }
 
 .cooolours {

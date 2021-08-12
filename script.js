@@ -6,8 +6,8 @@ const cooolours = Array.from(document.getElementsByClassName("cooolours"));
 
 // random number between 0 and 255
 
-function randomNumber0To255 () {
-    return Math.floor(Math.random() * 256)
+function randomNumber0To360 () {
+    return Math.floor(Math.random() * 361)
 }
 
 // random number between 0 and 100
@@ -19,7 +19,7 @@ function randomNumber0To100 () {
 // random colour generator
 
 function randomHSLCooolour () {
-    return `${randomNumber0To255()}, ${randomNumber0To255()}%, ${randomNumber0To255()}%`
+    return `${randomNumber0To360()}, ${randomNumber0To100()}%, ${randomNumber0To100()}%`
 }
 
 // set cooolours with random colours
