@@ -1,6 +1,9 @@
 // constants
 
 const cooolours = Array.from(document.getElementsByClassName("cooolours"));
+const twitterButton = document.getElementsByClassName(
+	"twitter-share-button"
+)[0];
 
 // functions
 
@@ -54,14 +57,6 @@ async function fetchReplaceAndSetColors(list) {
 		i++;
 	}
 	console.log(list);
-}
-
-// set cooolours with random colours
-
-function setCooolours() {
-	cooolours.forEach((e) => {
-		e.style.backgroundColor = `hsl(${randomHSLCooolour()})`;
-	});
 }
 
 // stuff to do on page load
