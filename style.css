@@ -41,6 +41,8 @@ header {
 
 main {
 	height: 80%;
+	display: flex;
+	flex-direction: column;
 }
 
 .cooolours {
@@ -70,4 +72,32 @@ main {
 	background-color: transparent;
 	font-size: 8vw;
 	width: 15%;
+}
+
+@media only screen and (min-width: 768px) {
+	body {
+		flex-direction: column;
+	}
+
+	.header__title {
+		font-size: 3em;
+	}
+
+	.header__para {
+		font-size: 1.5em;
+	}
+
+	main {
+		flex-direction: row;
+	}
+
+	.cooolours {
+		height: 100%;
+		width: 20%;
+	}
+
+	.cooolours__button {
+		font-size: 4vw;
+		width: auto;
+	}
 }
