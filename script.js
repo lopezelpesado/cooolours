@@ -8,6 +8,8 @@ const tweeter = document.getElementsByTagName("a")[0];
 
 // event listeners
 
+// click on colours to reveal or hide button menu
+
 cooolours.forEach((e) => {
 	e.addEventListener("click", (e) => {
 		let cooolourDisplay = e.target.querySelector("div").style.display;
@@ -19,6 +21,8 @@ cooolours.forEach((e) => {
 		}
 	});
 });
+
+// click on refresh buttons to get a new color for the corresponding section
 
 cooolours.forEach((e) => {
 	let buttons = Array.from(
