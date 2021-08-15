@@ -100,4 +100,9 @@ main {
 		font-size: 4vw;
 		width: auto;
 	}
+
+	.cooolours__name {
+		background-color: white;
+		font-size: 2em;
+	}
 }
