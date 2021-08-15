@@ -1,9 +1,56 @@
 // constants
 
 const cooolours = Array.from(document.getElementsByClassName("cooolours"));
-const twitterButton = document.getElementsByClassName(
-	"twitter-share-button"
-)[0];
+
+const colorList = createColoursList();
+
+const tweeter = document.getElementsByTagName("a")[0];
+
+// event listeners
+
+cooolours.forEach((e) => {
+	e.addEventListener("click", (e) => {
+		let cooolourDisplay = e.target.querySelector("div").style.display;
+
+		if (cooolourDisplay === "none") {
+			e.target.querySelector("div").style.display = "flex";
+		} else {
+			e.target.querySelector("div").style.display = "none";
+		}
+	});
+});
+
+cooolours.forEach((e) => {
+	let buttons = Array.from(
+		e.querySelector("div").getElementsByTagName("button")
+	);
+
+	buttons.forEach((e) => {
+		e.addEventListener("click", (e) => {
+			let thisCooolour = e.target.parentElement.parentElement;
+			let thisIndex = cooolours.indexOf(thisCooolour);
+			(async () => {
+				let newRandomColor = randomHSLCooolour();
+
+				let newCooolour = await fetchColor(newRandomColor.replaceAll(" ", ""));
+
+				console.log(newCooolour);
+
+				colorList[`color${thisIndex + 1}`] = newCooolour;
+
+				cooolours[thisIndex].style.backgroundColor =
+					newCooolour.name.closest_named_hex;
+
+				cooolours[thisIndex].querySelector("h2").textContent =
+					newCooolour.name.value;
+
+				e.target.parentElement.style.display = "none";
+
+				tweetLinkGenerator();
+			})();
+		});
+	});
+});
 
 // functions
 
@@ -45,6 +92,15 @@ function fetchColor(randomColorHSL) {
 	).then((response) => response.json());
 }
 
+// twitter link generator
+
+function tweetLinkGenerator() {
+	tweeter.setAttribute(
+		"href",
+		`https://twitter.com/intent/tweet?text=Check%20out%20my%20colour%20scheme%3A%20${colorList.color1.name.value}%2C%20${colorList.color2.name.value}%2C%20${colorList.color3.name.value}%2C%20${colorList.color4.name.value}%20and%20${colorList.color5.name.value}%21%20Generate%20your%20own%20at%20https%3A//lopezelpesado.github.io/cooolours/`
+	);
+}
+
 // fetch the randomly generated colours and replace them in the color list with actual colors
 
 async function fetchReplaceAndSetColors(list) {
@@ -56,13 +112,12 @@ async function fetchReplaceAndSetColors(list) {
 		cooolours[i].querySelector("h2").textContent = list[color].name.value;
 		i++;
 	}
+	tweetLinkGenerator();
 	console.log(list);
 }
 
 // stuff to do on page load
 
-const colorList = createColoursList();
+fetchReplaceAndSetColors(colorList);
 
 console.log(colorList);
-
-fetchReplaceAndSetColors(colorList);
